@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LuxInfoWidget</string>
+   
+    <string name="row1_string">Row 1</string>
+    <string name="row2_string">Row 2</string>
+    <string name="row3_string">Row 3</string>
+
+    <string name="yahoo_weather_url">http://weather.yahooapis.com/forecastrss?w=979721&amp;u=c</string>
+    <string name="vdl_feed_url">http://vdl.lu/NewsRSS.rss</string>
+    <string name="wort_feed_url">http://www.wort.lu/rss/en</string>
+    <string name="rockhal_agenda_url">http://m.rockhal.lu/agenda-m/</string>
+    <string name="rockhal_base_url">http://m.rockhal.lu/</string>	
+    <string name="weather_default_image_url">http://l.yimg.com/a/i/us/we/52/3200.gif</string>
+    <string name="weather_image_base_url">http://l.yimg.com/a/i/us/we/52/</string>
+    <string name="not_available">Not data available</string>
+    <string name="last_update">Last update:</string>
+</resources>
