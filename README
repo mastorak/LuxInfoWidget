@@ -1,1 +1,6 @@
 LuxInfoWidget is an android widget that provides dynamic information about Luxembourg
+In the current version it provides:
+-Weather information
+-Latest wort.lu headline
+-Upcoming concert organized by Rockhal
+-Latest Luxembourg city announcements 
