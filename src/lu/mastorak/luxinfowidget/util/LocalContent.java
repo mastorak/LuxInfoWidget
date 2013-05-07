@@ -212,7 +212,7 @@ public class LocalContent {
 		
 		SharedPreferences gig = AppResources.getSharedPreferences(Constants.GIG_STORAGE);
 		title=gig.getString(Constants.TITLE, "");
-		date=gig.getString(Constants.DATE, "Constants.NO_DATA_AVAILABLE");
+		date=gig.getString(Constants.DATE, Constants.NO_DATA_AVAILABLE);
 		url=gig.getString(Constants.URL, "");
 		
 		data=new GigData(title, date, url);

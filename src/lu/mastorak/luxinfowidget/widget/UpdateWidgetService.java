@@ -27,6 +27,7 @@ import android.net.Uri;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 /**
  * The widget update service class
@@ -36,10 +37,19 @@ import android.widget.RemoteViews;
  */
 public class UpdateWidgetService extends Service {
   
+	private static int[] widgetIds;
+	private static UpdateWidgetService serviceInstance;
+	
+	
+	public static UpdateWidgetService instance() {
+        return serviceInstance;
+}
+	
 	@Override
 	public void onCreate(){
 		//set the context so non-activity classes can use it
 		AppResources.setContext(this);
+		serviceInstance=this;
 	}
 	
   @Override
@@ -51,41 +61,73 @@ public class UpdateWidgetService extends Service {
     int[] allWidgetIds = intent
         .getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
     
-    for (int widgetId : allWidgetIds) {
-      // Create some random data
-    
-
-      RemoteViews remoteViews = new RemoteViews(this
-          .getApplicationContext().getPackageName(),
-          R.layout.widget_layout);
-      
-      // Set layout info with what is stored
-      setupLayoutIinfo(remoteViews);
-      appWidgetManager.updateAppWidget(widgetId, remoteViews);
-      
-      //only update if there is network connectivity
-      if(RemoteContent.isOnline()){
-	      //Retrieve the info from the internet
-	      retrieveRemoteInfo();
-	      // Set layout info with the latest info after updating
+    if(allWidgetIds!=null){
+    	widgetIds=allWidgetIds;
+    }
+    	 
+	    for (int widgetId : widgetIds) {
+	    
+	      RemoteViews remoteViews = new RemoteViews(this
+	          .getApplicationContext().getPackageName(),
+	          R.layout.widget_layout);
+	      
+	      // Set layout info with what is stored
 	      setupLayoutIinfo(remoteViews);
 	      appWidgetManager.updateAppWidget(widgetId, remoteViews);
-      }
-      
-      Intent i = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("http://www.google.com"));
-      PendingIntent pendingIntent = PendingIntent.getActivity(AppResources.getContext(),
-              0, i, PendingIntent.FLAG_CANCEL_CURRENT);
-      
-      remoteViews.setOnClickPendingIntent(R.id.weather_image,pendingIntent);
-      
-      
-      
-      appWidgetManager.updateAppWidget(widgetId, remoteViews);
-    }
+	      
+	      //only update if there is network connectivity
+	      if(RemoteContent.isOnline()){
+		      //Retrieve the info from the internet
+		      retrieveRemoteInfo();
+		      // Set layout info with the latest info after updating
+		      setupLayoutIinfo(remoteViews);
+		      appWidgetManager.updateAppWidget(widgetId, remoteViews);
+	      }
+	      
+	      Intent i = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("http://weather.yahoo.com/forecast/LUXX0003_c.html"));
+	      PendingIntent pendingIntent = PendingIntent.getActivity(AppResources.getContext(),
+	              0, i, PendingIntent.FLAG_CANCEL_CURRENT);
+	      
+	      remoteViews.setOnClickPendingIntent(R.id.weather_image,pendingIntent);
+	      
+	      
+	      
+	      appWidgetManager.updateAppWidget(widgetId, remoteViews);
+	    }
+    
     stopSelf();
 
     super.onStart(intent, startId);
   }
+  
+  
+  /**
+   * A method to retrieve the remote data from the various data managers 
+   */
+  private static void retrieveRemoteInfo(){
+	  
+	  RemoteContent remoteContentManager=new RemoteContent();
+	  //retrieve weather info
+	  Document weatherDoc=remoteContentManager.getXmlContent(AppResources.getContext().getResources().getString(R.string.yahoo_weather_url));
+      WeatherManager weatherManager=new WeatherManager();
+      weatherManager.getWeatherData(weatherDoc);
+      
+      //retrive rss info
+      Document newsDoc=remoteContentManager.getXmlContent(AppResources.getContext().getResources().getString(R.string.wort_feed_url));
+      RssManager rssManager=new RssManager();
+      rssManager.getRssData(newsDoc);
+      
+      //retrieve gig info
+      GigManager gigManager=new GigManager();
+      gigManager.getNextRockhalGig();
+      
+      //retrieve vdl info
+      Document villeDoc=remoteContentManager.getXmlContent(AppResources.getContext().getResources().getString(R.string.vdl_feed_url));
+      VdlManager vdlManager=new VdlManager();
+      vdlManager.getVdlData(villeDoc);
+	  
+  }
+  
   
   /**
    * A method to setup the layout with the data
@@ -153,32 +195,7 @@ public class UpdateWidgetService extends Service {
 	  remoteViews.setTextViewText(R.id.last_update_text,"Last update:"+dateFormat.format(date));
   }
 
-  /**
-   * A method to retrieve the remote data from the various data managers 
-   */
-  private void retrieveRemoteInfo(){
-	  
-	  RemoteContent remoteContentManager=new RemoteContent();
-	  //retrieve weather info
-	  Document weatherDoc=remoteContentManager.getXmlContent(getResources().getString(R.string.yahoo_weather_url));
-      WeatherManager weatherManager=new WeatherManager();
-      weatherManager.getWeatherData(weatherDoc);
-      
-      //retrive rss info
-      Document newsDoc=remoteContentManager.getXmlContent(getResources().getString(R.string.wort_feed_url));
-      RssManager rssManager=new RssManager();
-      rssManager.getRssData(newsDoc);
-      
-      //retrieve gig info
-      GigManager gigManager=new GigManager();
-      gigManager.getNextRockhalGig();
-      
-      //retrieve vdl info
-      Document villeDoc=remoteContentManager.getXmlContent(getResources().getString(R.string.vdl_feed_url));
-      VdlManager vdlManager=new VdlManager();
-      vdlManager.getVdlData(villeDoc);
-	  
-  }
+  
  
   
   @Override

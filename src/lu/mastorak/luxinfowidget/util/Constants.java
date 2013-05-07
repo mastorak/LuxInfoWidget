@@ -29,7 +29,7 @@ public interface Constants {
 	 public static String URL="URL";
 	 public static String DATE="DATE";
 	 public static String WEATHER_IMAGE_FILE="WEATHER_IMAGE_FILE";
-	 public static String NO_DATA_AVAILABLE="No Data Available";
+	 public static String NO_DATA_AVAILABLE="Data pending...";
 	 
 	 
 	 

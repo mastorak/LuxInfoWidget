@@ -11,15 +11,23 @@
             <intent-filter >
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
         </receiver>
+        
+        <receiver android:name="NetworkListener">
+        	<intent-filter >
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>    
+        </receiver>
+        
         <service android:name="lu.mastorak.luxinfowidget.widget.UpdateWidgetService"></service> 
     </application>
     
     <uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	
     <uses-sdk android:minSdkVersion="8" />
 </manifest> 

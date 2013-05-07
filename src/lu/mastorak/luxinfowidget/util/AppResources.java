@@ -23,7 +23,7 @@ public class AppResources {
 	{
 	  AppResources.context = context;
 	}
-	
+
 	/**
 	 * Get the String value of the request resource 
 	 * @param int id

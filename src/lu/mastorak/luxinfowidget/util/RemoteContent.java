@@ -15,6 +15,12 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import lu.mastorak.luxinfowidget.managers.GigManager;
+import lu.mastorak.luxinfowidget.managers.RssManager;
+import lu.mastorak.luxinfowidget.managers.VdlManager;
+import lu.mastorak.luxinfowidget.managers.WeatherManager;
+import lu.mastorak.luxinfowidget.widget.R;
+
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
@@ -30,6 +36,7 @@ import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * A class to get and format remote content
@@ -200,6 +207,7 @@ public class RemoteContent {
 	    }
 	    return isConnected;
 	}
+	
 	
 	
 }

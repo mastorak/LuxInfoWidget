@@ -28,8 +28,9 @@ public final class R {
         public static final int luxinfowidgetpreview=0x7f020001;
         public static final int rockhal_logo=0x7f020002;
         public static final int vdl_logo=0x7f020003;
-        public static final int widget_shape=0x7f020004;
-        public static final int wort_logo=0x7f020005;
+        public static final int weather_notavailable=0x7f020004;
+        public static final int widget_shape=0x7f020005;
+        public static final int wort_logo=0x7f020006;
     }
     public static final class id {
         public static final int gig_description=0x7f080008;
