@@ -112,6 +112,7 @@ public class RssManager {
 		
 		RssData data= getLatestItemRssData(doc);
 		
+		//create the rss data object
 		if (data==null|| data.getTitle().equals("") || data.getUrl().equals("")){
 			data=new RssData(AppResources.getStringResource(R.string.not_available), "", "");
 		}
@@ -120,6 +121,7 @@ public class RssManager {
 		Log.i(Constants.UTIL_LOG, "rss description:"+data.getDescription());
 		Log.i(Constants.UTIL_LOG, "rss url:"+data.getUrl());
 		
+		//store weather data
 		localContent.storeRssData(data);
 		
 		return data;

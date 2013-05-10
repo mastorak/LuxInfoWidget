@@ -10,6 +10,7 @@ import android.util.Log;
 
 /**
  * The main widget provider class
+ * 
  * @author Konstantinos Mastorakis
  *
  */
@@ -26,12 +27,12 @@ public class LuxInfoWidgetProvider extends AppWidgetProvider {
     ComponentName thisWidget = new ComponentName(context,
         LuxInfoWidgetProvider.class);
     int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
-    //build intent
+    //build intent for service
     Intent intent = new Intent(context.getApplicationContext(),
         UpdateWidgetService.class);
     intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, allWidgetIds);
 
-    // Update the widget via the service
+    // Start service to update widget
     context.startService(intent);
   }
 } 

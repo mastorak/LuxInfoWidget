@@ -26,11 +26,14 @@ public class NetworkListener extends BroadcastReceiver{
 	        final android.net.NetworkInfo mobile = cm
 	                .getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
+	        //check for connectivity
 	        if (wifi.isConnected() || mobile.isConnected()) {
 	         	
-	           
+	        		//check if service exists because on widget startup the broadcast
+	        		//receiver might start before the service
 	        		if(UpdateWidgetService.instance()!=null){
 	            	 Intent in = new Intent(context,UpdateWidgetService.class);
+	            	 //invoke service
 	            	 context.startService(in);
 	        		}
 	        }

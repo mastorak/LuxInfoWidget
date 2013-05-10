@@ -16,4 +16,5 @@
     <string name="weather_image_base_url">http://l.yimg.com/a/i/us/we/52/</string>
     <string name="not_available">Not data available</string>
     <string name="last_update">Last update:</string>
+    <string name="gig_label">Next gig:</string>
 </resources>

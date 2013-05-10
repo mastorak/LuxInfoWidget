@@ -39,7 +39,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 /**
- * A class to get and format remote content
+ * Class to retrieve and format remote content
  * @author Konstantinos Mastorakis
  *
  */
@@ -53,7 +53,7 @@ public class RemoteContent {
 	}
 	
 	/**
-	 * A method to retrieve a remote text content 
+	 * Method to retrieve remote text content 
 	 * @param String url The url of the remote text content
 	 * @return String The remote  content string
 	 */
@@ -83,19 +83,19 @@ public class RemoteContent {
 			   content = stringBuilder.toString();
 			  }
 		} catch (ClientProtocolException e) {
-			Log.e(Constants.UTIL_LOG, "Error retrieving url:"+url, e);			
+			Log.e(Constants.UTIL_LOG, "Error retrieving remote content from url:"+url, e);			
 		} catch (IllegalStateException e) {
-			Log.e(Constants.UTIL_LOG, "Error retrieving url:"+url, e);			
+			Log.e(Constants.UTIL_LOG, "Error retrieving remote content from url:"+url, e);			
 		} catch (IOException e) {
-			Log.e(Constants.UTIL_LOG, "Error retrieving url:"+url, e);			
+			Log.e(Constants.UTIL_LOG, "Error retrieving remote content from url:"+url, e);			
 		}
 		
 		return content;		
 	}
 	
 	/**
-	 * A method to build an xml document from a string 
-	 * @param String The feed the string contains the xml data
+	 * Method to build an xml document from a string 
+	 * @param String The feed-string that contains the xml data
 	 * @return Document The xml document 
 	 */
 	private Document stringToXmlDoc(String feed){

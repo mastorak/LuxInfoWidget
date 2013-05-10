@@ -82,10 +82,12 @@ public class WeatherManager {
 			}
 		}
 		
+		//create the weather data 
 		data=new WeatherData(temperature, high, low, description, tomorrowHigh, tomorrowLow, tomorrowDescription, imageUrl);
 		
 		Log.i(Constants.UTIL_LOG, "Weather:"+temperature+" "+description);
 		
+		//store weather data
 		localContent.storeWeatherData(data);
 		
 		return data;

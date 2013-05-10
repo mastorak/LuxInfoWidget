@@ -18,7 +18,7 @@ import lu.mastorak.luxinfowidget.content.VdlData;
 import lu.mastorak.luxinfowidget.content.WeatherData;
 
 /**
- * This class contains methods to store and retrieve data from local storage
+ * Class that contains methods to store and retrieve data from local storage
  * 
  * @author Konstantinos Mastorakis
  *
@@ -153,6 +153,42 @@ public class LocalContent {
 		
 		
 		return success;
+	}
+	
+	/**
+	 * Method to store the date/time formatted string of last update
+	 * @param String lastupdate
+	 * @return boolean
+	 */
+	public boolean storeLastUpdateTime(String lastupdate){
+		boolean success=false;
+		
+		SharedPreferences update=AppResources.getSharedPreferences(Constants.UPDATE_STORAGE);
+		Editor edit =update.edit();
+		edit.putString(Constants.LAST_UPDATE_TIME, lastupdate);
+		success=edit.commit();
+		
+		if(success){
+			Log.i(Constants.UTIL_LOG, "Succesfully stored last update time");
+		}else{
+			Log.w(Constants.UTIL_LOG, "Problem storing vdl last update time");
+		}
+		
+		return success;
+	}
+	
+	/**
+	 * Method to retrieve the date/time formatted string of last update
+	 * @return String
+	 */
+	public String getLastUpdateTime(){
+		
+		String lastUpdateTime=null;
+		
+		SharedPreferences update=AppResources.getSharedPreferences(Constants.UPDATE_STORAGE);
+		lastUpdateTime=update.getString(Constants.LAST_UPDATE_TIME, "");
+		
+		return lastUpdateTime;
 	}
 	
 	/**

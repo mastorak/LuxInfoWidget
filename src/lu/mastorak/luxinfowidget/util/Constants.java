@@ -15,6 +15,7 @@ public interface Constants {
 	 public static String VDL_STORAGE="VDL_STORAGE";
 	 public static String RSS_STORAGE="RSS_STORAGE";
 	 public static String GIG_STORAGE="GIG_STORAGE";
+	 public static String UPDATE_STORAGE="UPDATE_STORAGE";
 	 
 	 
 	 public static String TEMPERATURE="TEMPERATURE";
@@ -30,8 +31,8 @@ public interface Constants {
 	 public static String DATE="DATE";
 	 public static String WEATHER_IMAGE_FILE="WEATHER_IMAGE_FILE";
 	 public static String NO_DATA_AVAILABLE="Data pending...";
+	 public static String LAST_UPDATE_TIME="LAST_UPDATE_TIME";
 	 
-	 
-	 
+	  
 			 
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * A util class to get context based resources
+ * Utility class to get context based resources
  *  
  * @author Konstantinos Mastorakis
  *

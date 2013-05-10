@@ -86,7 +86,7 @@ public class VdlManager {
 		
 		RssData rssData=rssManager.getLatestItemRssData(doc);
 		
-		
+		//create the vdl data object
 		if(rssData!=null && !rssData.getTitle().equals("") && !rssData.getUrl().equals("")){
 			title=rssData.getTitle();
 			url=rssData.getUrl();
@@ -102,6 +102,7 @@ public class VdlManager {
 			vdlData=new VdlData(AppResources.getStringResource(R.string.not_available), "", "");
 		}
 		
+		//store the vdl data
 		localContent.storeVdlData(vdlData);
 		
 		return vdlData;

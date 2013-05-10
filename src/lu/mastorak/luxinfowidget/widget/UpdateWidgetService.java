@@ -41,14 +41,20 @@ public class UpdateWidgetService extends Service {
 	private static UpdateWidgetService serviceInstance;
 	
 	
+	/**
+	 * Method to retrieve the instance of the service. 
+	 * We use it to check if the service exists before invoking from elsewhere
+	 * @return UpdateWidgetService
+	 */
 	public static UpdateWidgetService instance() {
         return serviceInstance;
-}
+	}
 	
 	@Override
 	public void onCreate(){
 		//set the context so non-activity classes can use it
 		AppResources.setContext(this);
+		//set the service instance so we can check if it exists from elsewhere
 		serviceInstance=this;
 	}
 	
@@ -61,6 +67,7 @@ public class UpdateWidgetService extends Service {
     int[] allWidgetIds = intent
         .getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
     
+    //save the widgetids to use them when invoking the service elsewhere
     if(allWidgetIds!=null){
     	widgetIds=allWidgetIds;
     }
@@ -84,13 +91,11 @@ public class UpdateWidgetService extends Service {
 		      appWidgetManager.updateAppWidget(widgetId, remoteViews);
 	      }
 	      
+	      //set onclick listener to the weather image
 	      Intent i = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("http://weather.yahoo.com/forecast/LUXX0003_c.html"));
 	      PendingIntent pendingIntent = PendingIntent.getActivity(AppResources.getContext(),
-	              0, i, PendingIntent.FLAG_CANCEL_CURRENT);
-	      
+	              0, i, PendingIntent.FLAG_CANCEL_CURRENT);	      
 	      remoteViews.setOnClickPendingIntent(R.id.weather_image,pendingIntent);
-	      
-	      
 	      
 	      appWidgetManager.updateAppWidget(widgetId, remoteViews);
 	    }
@@ -102,11 +107,12 @@ public class UpdateWidgetService extends Service {
   
   
   /**
-   * A method to retrieve the remote data from the various data managers 
+   * Method to retrieve the remote data using the various data managers 
    */
   private static void retrieveRemoteInfo(){
 	  
 	  RemoteContent remoteContentManager=new RemoteContent();
+	  LocalContent localContentManager=new LocalContent();
 	  //retrieve weather info
 	  Document weatherDoc=remoteContentManager.getXmlContent(AppResources.getContext().getResources().getString(R.string.yahoo_weather_url));
       WeatherManager weatherManager=new WeatherManager();
@@ -126,11 +132,18 @@ public class UpdateWidgetService extends Service {
       VdlManager vdlManager=new VdlManager();
       vdlManager.getVdlData(villeDoc);
 	  
+      //store time of update
+      SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM HH:mm");
+	  Date date = new Date();
+	  String lastUpdateTime=dateFormat.format(date);
+	  localContentManager.storeLastUpdateTime(lastUpdateTime);
+	  
+      
   }
   
   
   /**
-   * A method to setup the layout with the data
+   * Method to setup the layout with the data
    * @param RemoteViews remoteViews
    */
   private void setupLayoutIinfo(RemoteViews remoteViews){
@@ -179,7 +192,7 @@ public class UpdateWidgetService extends Service {
 	  
 	  //set gig info
 	  GigData gig=localContent.getGigData();
-	  remoteViews.setTextViewText(R.id.gig_title, gig.getTitle());
+	  remoteViews.setTextViewText(R.id.gig_title,gig.getTitle());
 	  remoteViews.setTextViewText(R.id.gig_description, gig.getDate());
 	  
 	  Intent gigIntent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(gig.getUrl()));
@@ -190,9 +203,8 @@ public class UpdateWidgetService extends Service {
       remoteViews.setOnClickPendingIntent(R.id.gig_description,gigPendingIntent);
       
       //set lastupdate
-      SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM HH:mm");
-	  Date date = new Date();
-	  remoteViews.setTextViewText(R.id.last_update_text,"Last update:"+dateFormat.format(date));
+      String lastUpdateTime=localContent.getLastUpdateTime();
+	  remoteViews.setTextViewText(R.id.last_update_text,"Last update:"+lastUpdateTime);
   }
 
   

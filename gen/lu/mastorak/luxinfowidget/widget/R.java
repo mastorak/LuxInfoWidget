@@ -33,17 +33,18 @@ public final class R {
         public static final int wort_logo=0x7f020006;
     }
     public static final class id {
-        public static final int gig_description=0x7f080008;
+        public static final int gig_description=0x7f080009;
         public static final int gig_image=0x7f080006;
-        public static final int gig_title=0x7f080007;
-        public static final int last_update_text=0x7f08000c;
+        public static final int gig_label=0x7f080007;
+        public static final int gig_title=0x7f080008;
+        public static final int last_update_text=0x7f08000d;
         public static final int news_description=0x7f080005;
         public static final int news_image=0x7f080003;
         public static final int news_title=0x7f080004;
         public static final int tomorrow_weather_text=0x7f080002;
-        public static final int vdl_description=0x7f08000b;
-        public static final int vdl_image=0x7f080009;
-        public static final int vdl_title=0x7f08000a;
+        public static final int vdl_description=0x7f08000c;
+        public static final int vdl_image=0x7f08000a;
+        public static final int vdl_title=0x7f08000b;
         public static final int weather_image=0x7f080000;
         public static final int weather_text=0x7f080001;
     }
@@ -52,6 +53,7 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f060000;
+        public static final int gig_label=0x7f06000d;
         public static final int last_update=0x7f06000c;
         public static final int not_available=0x7f06000b;
         public static final int rockhal_agenda_url=0x7f060007;

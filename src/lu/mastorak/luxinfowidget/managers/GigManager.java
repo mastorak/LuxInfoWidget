@@ -25,6 +25,10 @@ public class GigManager {
 		localContent=new LocalContent();
 	}
 	
+	/**
+	 * Method to retrieve the next gig data
+	 * @return GigData
+	 */
 	public GigData getNextRockhalGig(){
 		
 		GigData data =null;
@@ -80,13 +84,14 @@ public class GigManager {
 			}	
 		}
 		
+		//create the gig data object
 		if(title!=null && date!=null && url!=null){
 			data=new GigData(title, date, url);
 		}else{
 			data=new GigData(AppResources.getStringResource(R.string.not_available), "", "");
 			Log.w(Constants.UTIL_LOG, "Could not get gig data");
 		}
-		
+		//store the data
 		localContent.storeGigData(data);
 		return data;
 	}
