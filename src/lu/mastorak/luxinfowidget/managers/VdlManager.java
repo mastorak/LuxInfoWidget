@@ -91,7 +91,7 @@ public class VdlManager {
 			title=rssData.getTitle();
 			url=rssData.getUrl();
 		
-			text=getVdlItemText(url);
+		//	text=getVdlItemText(url);
 			
 			if(text==null){
 				text=new String("");
