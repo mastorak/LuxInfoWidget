@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"  
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/widget_margin_top"
+    android:layout_marginBottom="@dimen/widget_margin_bottom"
+    android:layout_marginLeft="@dimen/widget_margin_left"
+    android:layout_marginRight="@dimen/widget_margin_right"
+    android:layout_gravity="center"
+    android:background="#FFFFFF"
+    android:padding="3dp">
+ 
+ 	<!-- Weather row -->  
+    <LinearLayout 
+   	android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#FFFFFF"
+    android:layout_marginBottom="@dimen/row_margin_bottom"
+	>
+	 <ImageView
+            android:id="@+id/weather_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="3dp"
+            android:layout_gravity="center"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:background="#F0F0F0"
+            android:src="@drawable/weather_notavailable" 
+      />
+	 
+       <TextView
+      android:id="@+id/weather_text"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:gravity="left"
+      android:padding="2dp"
+      android:text="@string/not_available"
+      android:textSize="11sp"
+      android:textColor="#232323"
+      android:background="#F0F0F0"     
+      />   
+      
+         <TextView
+      android:id="@+id/tomorrow_weather_text"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="left"
+      android:padding="2dp"
+      android:text=""
+      android:textSize="11sp"
+      android:textColor="#232323"
+      android:background="#F0F0F0"
+      android:layout_marginLeft="@dimen/row_margin_bottom"     
+      />   
+    
+    </LinearLayout>        
+    
+   <!-- News Row -->
+    <LinearLayout 
+   	android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#F0F0F0"
+    android:layout_marginBottom="@dimen/row_margin_bottom"
+	>
+	 <ImageView
+            android:id="@+id/news_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="3dp"
+            android:layout_gravity="center"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:src="@drawable/wort_logo" 
+      />
+	 
+     		<!-- Text cell -->
+			  <LinearLayout 
+		   	android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical"
+		    android:background="#F0F0F0"
+		    android:layout_marginBottom="@dimen/row_margin_bottom"
+			>
+			        <TextView
+				      android:id="@+id/news_title"
+				      android:layout_width="match_parent"
+				      android:layout_height="wrap_content"
+				      android:gravity="left"
+				      android:textSize="10sp"
+				      android:textColor="#232323"
+				      android:textStyle="bold"
+				      />
+			        <TextView
+				      android:id="@+id/news_description"
+				      android:layout_width="match_parent"
+				      android:layout_height="wrap_content"
+				      android:gravity="left"
+				      android:textSize="10sp"
+				      android:textColor="#232323"
+				      />    
+			</LinearLayout>
+    </LinearLayout>      
+        
+    <!-- Gig Row -->
+    <LinearLayout 
+   	android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#F0F0F0"
+    android:layout_marginBottom="@dimen/row_margin_bottom"
+	>
+	 <ImageView
+            android:id="@+id/gig_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="3dp"
+            android:layout_gravity="center"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:src="@drawable/rockhal_logo" 
+      />
+	 
+     		<!-- Text cell -->
+			  <LinearLayout 
+		   	android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal"
+		    android:background="#F0F0F0"
+		    android:layout_marginBottom="@dimen/row_margin_bottom"
+			>
+			        
+			      
+ 				   <TextView
+				      android:id="@+id/gig_label"
+				      android:layout_width="wrap_content"
+				      android:layout_height="match_parent"
+				      android:padding="2dp"
+				      android:gravity="left"
+				      android:textSize="10sp"
+				      android:textColor="#232323"
+				      android:text="@string/gig_label"
+				      />			      
+			        <TextView
+				      android:id="@+id/gig_title"
+				      android:layout_width="wrap_content"
+				      android:layout_height="match_parent"
+				      android:padding="2dp"
+				      android:gravity="left"
+				      android:textSize="10sp"
+				      android:textColor="#232323"
+				      android:textStyle="bold"
+				      />
+			        <TextView
+				      android:id="@+id/gig_description"
+				      android:layout_width="wrap_content"
+				      android:layout_height="match_parent"
+				      android:padding="2dp"
+				      android:gravity="left"
+				      android:textSize="10sp"
+				      android:textColor="#232323"
+				      />    
+			</LinearLayout>
+    </LinearLayout>    
+     
+    <!-- Vdl row -->
+     <LinearLayout 
+   	android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#F0F0F0"
+    android:layout_marginBottom="@dimen/row_margin_bottom"
+	>
+	 <ImageView
+            android:id="@+id/vdl_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="3dp"
+            android:layout_gravity="center"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:src="@drawable/vdl_logo" 
+      />
+	 
+     		<!-- Text cell -->
+			  <LinearLayout 
+		   	android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical"
+		    android:background="#F0F0F0"
+		    android:layout_marginBottom="@dimen/row_margin_bottom"
+			>
+			        <TextView
+				      android:id="@+id/vdl_title"
+				      android:layout_width="match_parent"
+				      android:layout_height="wrap_content"
+				      android:gravity="left"
+				      android:textSize="10sp"
+				      android:textColor="#232323"
+				      android:textStyle="bold"
+				      />
+			        <TextView
+				      android:id="@+id/vdl_description"
+				      android:layout_width="match_parent"
+				      android:layout_height="wrap_content"
+				      android:gravity="left"
+				      android:textSize="10sp"
+				      android:textColor="#232323"
+				      />    
+			</LinearLayout>
+    </LinearLayout>       
+  
+       <TextView
+      android:id="@+id/last_update_text"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:padding="2dp"
+      android:textAlignment="center"
+      android:text="@string/last_update"
+      android:textSize="8sp"
+      android:textColor="#000000"     
+      />   
+
+</LinearLayout>    
