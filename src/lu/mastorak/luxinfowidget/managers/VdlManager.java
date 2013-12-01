@@ -89,6 +89,7 @@ public class VdlManager {
 		//create the vdl data object
 		if(rssData!=null && !rssData.getTitle().equals("") && !rssData.getUrl().equals("")){
 			title=rssData.getTitle();
+			Log.i(Constants.UTIL_LOG, "Vdl title:"+title);
 			url=rssData.getUrl();
 		
 		//	text=getVdlItemText(url);

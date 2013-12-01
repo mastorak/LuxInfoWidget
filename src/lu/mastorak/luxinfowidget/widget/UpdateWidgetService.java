@@ -71,7 +71,8 @@ public class UpdateWidgetService extends Service {
     if(allWidgetIds!=null){
     	widgetIds=allWidgetIds;
     }
-    	 
+    	
+    if(widgetIds!=null){
 	    for (int widgetId : widgetIds) {
 	    
 	      RemoteViews remoteViews = new RemoteViews(this
@@ -99,6 +100,7 @@ public class UpdateWidgetService extends Service {
 	      
 	      appWidgetManager.updateAppWidget(widgetId, remoteViews);
 	    }
+    }
     
     stopSelf();
 
